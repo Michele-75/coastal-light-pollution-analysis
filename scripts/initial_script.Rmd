@@ -1,9 +1,9 @@
 ---
-title: "R Notebook"
+title: "Initial Script- Exploring Satellite Image"
 output: html_notebook
 ---
 
-This is where my initial script will go!
+Using Data from https://www.ngdc.noaa.gov/eog/dmsp/downloadV4composites.html
 
 ```{r}
 #install terra package needed for working with raster data (gridded spatial data like this satellite imagery)
@@ -14,6 +14,47 @@ install.packages("terra")
 ```{r}
 library(terra)
 
-lights <- rast("data/raw/F152000.v4b_web.stable_lights.avg_vis.tif")
+# rast() reads the TIFF file into a SpatRaster object allowing us to crop, visualize, and analyze global nighttime light intensity values
+lights <- rast("C:/Users/mpp24/OneDrive/Documents/coastal-light-pollution-analysis/data/raw/F152000.v4b_web.stable_lights.avg_vis.tif")
+```
+
+```{r}
+#First look at data set
+plot(lights)
+```
+```{r}
+#Explore dataset
+lights
+summary(lights)
+head(lights)
+```
+```{r}
+#Right now raster is global-millions of pixels! Let's zoom in to just Florida.
+#Florida roughly spans -88 Longitude to -79 Longitude, 24 Latitude to 32 Latitude
+fl_bbox <- ext(-88, -79, 24, 32) #Create a rough extent
+fl_lights <- crop(lights, fl_bbox) #Crop raster
+
+
+```
+
+```{r}
+#Check out new cropped area
+fl_lights
+plot(fl_lights)
+#Notice size is now 960 X 1080 instead of 16801 X 43201
+```
+
+
+```{r}
+#Look at distribution of light intensity in Florida
+
+hist(fl_lights, maxpixels = 200000,
+     main = "Florida Nighttime Lights",
+     xlab = "Digital Number (DN) (Brightness Measure)",
+     col = "steelblue")
+
+#Will dive into units more later, but higher digital number (DN)= brighter lights
+#Will need to change scale of y axis, adjust bin size, etc.
+
 ```
 
