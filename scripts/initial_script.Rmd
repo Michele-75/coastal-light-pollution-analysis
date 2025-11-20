@@ -1,6 +1,8 @@
 ---
 title: "Initial Script- Exploring Satellite Image"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 Using Data from https://www.ngdc.noaa.gov/eog/dmsp/downloadV4composites.html
