@@ -1,6 +1,8 @@
 ---
 title: "Initial Script- Exploring Satellite Image"
-output: rmarkdown::github_document
+output:
+  word_document: default
+  html_document: default
 ---
 
 Using Data from https://www.ngdc.noaa.gov/eog/dmsp/downloadV4composites.html
