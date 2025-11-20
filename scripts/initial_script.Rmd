@@ -6,6 +6,14 @@ output: html_notebook
 This is where my initial script will go!
 
 ```{r}
-2+2
+#install terra package needed for working with raster data (gridded spatial data like this satellite imagery)
+install.packages("terra")
+```
+
+
+```{r}
+library(terra)
+
+lights <- rast("data/raw/F152000.v4b_web.stable_lights.avg_vis.tif")
 ```
 
