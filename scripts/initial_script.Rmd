@@ -1,15 +1,15 @@
 ---
 title: "Initial Script- Exploring Satellite Image"
 output:
-  word_document: default
   html_document: default
+  word_document: default
 ---
 
 Using Data from https://www.ngdc.noaa.gov/eog/dmsp/downloadV4composites.html
 
 ```{r}
 #install terra package needed for working with raster data (gridded spatial data like this satellite imagery)
-install.packages("terra")
+#install.packages("terra")
 ```
 
 
